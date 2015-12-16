@@ -9,7 +9,7 @@ describe('node-weixin-events', function () {
     ];
     var cnt = 0;
     for (var i = 0; i < events.length; i++) {
-      nodeWeixinEvents.on(events[i], (function (idx) {
+      assert.equal(true, nodeWeixinEvents.on(nodeWeixinEvents[events[i]], (function (idx) {
         return function (v) {
           assert.equal(true, v === idx);
           cnt++;
@@ -17,13 +17,17 @@ describe('node-weixin-events', function () {
             done();
           }
         };
-      })(i));
-      nodeWeixinEvents.emit(events[i], [i]);
+      })(i)));
+      assert.equal(true, nodeWeixinEvents.emit(nodeWeixinEvents[events[i]], [i]));
+      assert.equal(false, nodeWeixinEvents.emit(nodeWeixinEvents[events[i]], i));
     }
   });
   it('should fail to listen events not defined', function () {
-    assert.equal(false, nodeWeixinEvents.on('OAUTH_SUCCESS1', function () {
+    assert.equal(false, nodeWeixinEvents.on(function() {}, function () {
     }));
-    assert.equal(false, nodeWeixinEvents.emit('OAUTH_SUCCESS1'));
+    assert.equal(false, nodeWeixinEvents.emit([]));
+    assert.equal(false, nodeWeixinEvents.emit('sfsf', function() {
+
+    }));
   });
 });

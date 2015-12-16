@@ -1,6 +1,6 @@
 {
   "name": "node-weixin-events",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Notification Events for node weixin",
   "homepage": "http://www.node-weixin.com",
   "author": {
