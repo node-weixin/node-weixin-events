@@ -4,8 +4,7 @@ import nodeWeixinEvents from '../lib';
 describe('node-weixin-events', function () {
   it('should listen and emit events', function (done) {
     var events = [
-      'OAUTH_SUCCESS', 'ORDER_CREATE', 'ORDER_NOTIFY', 'ACCESS_TOKEN_UPDATE', 'ACCESS_TOKEN_NOTIFY',
-      'ACCESS_TOKEN_REFRESH'
+      'OAUTH_SUCCESS', 'ORDER_CREATE', 'ORDER_NOTIFY', 'JSSDK_TICKET_NOTIFY', 'ACCESS_TOKEN_NOTIFY'
     ];
     var cnt = 0;
     for (var i = 0; i < events.length; i++) {
